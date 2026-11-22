@@ -1,5 +1,6 @@
 bin/
-dist/
+web/dist/
+web/coverage/
 coverage/
 *.exe
 *.out

@@ -1,0 +1,10 @@
+{
+  "channelCap": 4096,
+  "classification": "LOCAL_SINGLE_HOST_BENCHMARK",
+  "durationSec": 8,
+  "logicalDevices": 100,
+  "profile": "smoke",
+  "runId": "run-smoke-001",
+  "targetRate": 200,
+  "workerPool": 8
+}

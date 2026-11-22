@@ -31,3 +31,4 @@ Authoritative source: `PROJECT_CONSTITUTION.md` Sections A–G.
 
 ## 6. Read-Only UI REST Endpoints (`/api/v1` on `8200`)
 - `GET /api/v1/runs`, `GET /api/v1/runs/:id/summary`, `GET /api/v1/runs/:id/devices`, `GET /api/v1/runs/:id/devices/:deviceId`, `GET /api/v1/runs/:id/geofences`, `GET /api/v1/runs/:id/transitions`, `GET /api/v1/runs/:id/timeseries`, `GET /api/v1/runs/:id/reconciliation`, `GET /api/v1/runs/:id/incidents`, `GET /api/v1/runs/:id/stream` (<=1Hz SSE), `GET /api/v1/health`.
+

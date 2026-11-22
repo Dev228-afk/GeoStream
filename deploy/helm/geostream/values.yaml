@@ -1,0 +1,14 @@
+replicaCount: 2
+workerPool: 8
+channelCap: 4096
+image:
+  repository: ghcr.io/example/geostream-worker
+  tag: latest
+resources:
+  requests:
+    cpu: 250m
+    memory: 256Mi
+  limits:
+    cpu: 1000m
+    memory: 512Mi
+

@@ -1,0 +1,245 @@
+{
+  "features": [
+    {
+      "geometry": {
+        "coordinates": [
+          [
+            -121.95,
+            37.28
+          ],
+          [
+            -121.95,
+            37.38
+          ]
+        ],
+        "type": "LineString"
+      },
+      "properties": {
+        "axis": "meridian",
+        "index": 0
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          [
+            -121.95,
+            37.28
+          ],
+          [
+            -121.825,
+            37.28
+          ]
+        ],
+        "type": "LineString"
+      },
+      "properties": {
+        "axis": "parallel",
+        "index": 0
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          [
+            -121.925,
+            37.28
+          ],
+          [
+            -121.925,
+            37.38
+          ]
+        ],
+        "type": "LineString"
+      },
+      "properties": {
+        "axis": "meridian",
+        "index": 1
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          [
+            -121.95,
+            37.300000000000004
+          ],
+          [
+            -121.825,
+            37.300000000000004
+          ]
+        ],
+        "type": "LineString"
+      },
+      "properties": {
+        "axis": "parallel",
+        "index": 1
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          [
+            -121.9,
+            37.28
+          ],
+          [
+            -121.9,
+            37.38
+          ]
+        ],
+        "type": "LineString"
+      },
+      "properties": {
+        "axis": "meridian",
+        "index": 2
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          [
+            -121.95,
+            37.32
+          ],
+          [
+            -121.825,
+            37.32
+          ]
+        ],
+        "type": "LineString"
+      },
+      "properties": {
+        "axis": "parallel",
+        "index": 2
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          [
+            -121.875,
+            37.28
+          ],
+          [
+            -121.875,
+            37.38
+          ]
+        ],
+        "type": "LineString"
+      },
+      "properties": {
+        "axis": "meridian",
+        "index": 3
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          [
+            -121.95,
+            37.34
+          ],
+          [
+            -121.825,
+            37.34
+          ]
+        ],
+        "type": "LineString"
+      },
+      "properties": {
+        "axis": "parallel",
+        "index": 3
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          [
+            -121.85000000000001,
+            37.28
+          ],
+          [
+            -121.85000000000001,
+            37.38
+          ]
+        ],
+        "type": "LineString"
+      },
+      "properties": {
+        "axis": "meridian",
+        "index": 4
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          [
+            -121.95,
+            37.36
+          ],
+          [
+            -121.825,
+            37.36
+          ]
+        ],
+        "type": "LineString"
+      },
+      "properties": {
+        "axis": "parallel",
+        "index": 4
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          [
+            -121.825,
+            37.28
+          ],
+          [
+            -121.825,
+            37.38
+          ]
+        ],
+        "type": "LineString"
+      },
+      "properties": {
+        "axis": "meridian",
+        "index": 5
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          [
+            -121.95,
+            37.38
+          ],
+          [
+            -121.825,
+            37.38
+          ]
+        ],
+        "type": "LineString"
+      },
+      "properties": {
+        "axis": "parallel",
+        "index": 5
+      },
+      "type": "Feature"
+    }
+  ],
+  "type": "FeatureCollection"
+}

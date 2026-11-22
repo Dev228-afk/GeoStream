@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-worker
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ .Release.Name }}-worker
+  template:
+    metadata:
+      labels:
+        app: {{ .Release.Name }}-worker
+    spec:
+      terminationGracePeriodSeconds: 30
+      containers:
+        - name: worker
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          env:
+            - name: GEOSTREAM_WORKER_POOL
+              value: "{{ .Values.workerPool }}"
+            - name: GEOSTREAM_CHANNEL_CAP
+              value: "{{ .Values.channelCap }}"
+          ports:
+            - containerPort: 8201
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+

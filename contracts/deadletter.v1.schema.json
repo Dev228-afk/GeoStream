@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/geostream/contracts/deadletter.v1.schema.json",
+  "title": "DeadletterRecordV1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "originalTopic",
+    "partition",
+    "offset",
+    "eventId",
+    "reason",
+    "redactedPayloadHash"
+  ],
+  "properties": {
+    "originalTopic": { "type": "string", "minLength": 1 },
+    "partition": { "type": "integer", "minimum": 0 },
+    "offset": { "type": "integer", "minimum": 0 },
+    "eventId": { "type": "string" },
+    "reason": { "type": "string", "minLength": 1 },
+    "redactedPayloadHash": { "type": "string", "minLength": 16, "maxLength": 128 }
+  }
+}
+

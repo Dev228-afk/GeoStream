@@ -1,0 +1,98 @@
+[
+  {
+    "partition": 0,
+    "startOffset": 0,
+    "endOffset": 128,
+    "committedOffset": 128
+  },
+  {
+    "partition": 1,
+    "startOffset": 0,
+    "endOffset": 112,
+    "committedOffset": 112
+  },
+  {
+    "partition": 2,
+    "startOffset": 0,
+    "endOffset": 96,
+    "committedOffset": 96
+  },
+  {
+    "partition": 3,
+    "startOffset": 0,
+    "endOffset": 79,
+    "committedOffset": 79
+  },
+  {
+    "partition": 4,
+    "startOffset": 0,
+    "endOffset": 112,
+    "committedOffset": 112
+  },
+  {
+    "partition": 5,
+    "startOffset": 0,
+    "endOffset": 112,
+    "committedOffset": 112
+  },
+  {
+    "partition": 6,
+    "startOffset": 0,
+    "endOffset": 144,
+    "committedOffset": 144
+  },
+  {
+    "partition": 7,
+    "startOffset": 0,
+    "endOffset": 64,
+    "committedOffset": 64
+  },
+  {
+    "partition": 8,
+    "startOffset": 0,
+    "endOffset": 48,
+    "committedOffset": 48
+  },
+  {
+    "partition": 9,
+    "startOffset": 0,
+    "endOffset": 64,
+    "committedOffset": 64
+  },
+  {
+    "partition": 10,
+    "startOffset": 0,
+    "endOffset": 96,
+    "committedOffset": 96
+  },
+  {
+    "partition": 11,
+    "startOffset": 0,
+    "endOffset": 64,
+    "committedOffset": 64
+  },
+  {
+    "partition": 12,
+    "startOffset": 0,
+    "endOffset": 111,
+    "committedOffset": 111
+  },
+  {
+    "partition": 13,
+    "startOffset": 0,
+    "endOffset": 158,
+    "committedOffset": 158
+  },
+  {
+    "partition": 14,
+    "startOffset": 0,
+    "endOffset": 87,
+    "committedOffset": 87
+  },
+  {
+    "partition": 15,
+    "startOffset": 0,
+    "endOffset": 127,
+    "committedOffset": 127
+  }
+]

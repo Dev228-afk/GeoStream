@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/geostream/contracts/geofence-transition.v1.schema.json",
+  "title": "GeofenceTransitionV1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "transitionId",
+    "runId",
+    "deviceId",
+    "fenceId",
+    "fenceVersion",
+    "type",
+    "sourceEventId",
+    "sourceSequence",
+    "eventTime"
+  ],
+  "properties": {
+    "schemaVersion": { "type": "integer", "const": 1 },
+    "transitionId": { "type": "string", "minLength": 1, "maxLength": 64 },
+    "runId": { "type": "string", "minLength": 1, "maxLength": 64 },
+    "deviceId": { "type": "string", "minLength": 1, "maxLength": 64 },
+    "fenceId": { "type": "string", "minLength": 1, "maxLength": 64 },
+    "fenceVersion": { "type": "integer", "minimum": 1 },
+    "type": { "type": "string", "enum": ["ENTER", "EXIT"] },
+    "sourceEventId": { "type": "string", "minLength": 1, "maxLength": 64 },
+    "sourceSequence": { "type": "integer", "minimum": 1 },
+    "eventTime": { "type": "string", "format": "date-time" }
+  }
+}
+

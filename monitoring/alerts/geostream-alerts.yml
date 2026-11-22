@@ -1,0 +1,61 @@
+groups:
+  - name: geostream.pipeline.alerts
+    rules:
+      - alert: GeoStreamSequenceGapsDetected
+        expr: increase(geostream_sequence_gaps_total[1m]) > 0
+        for: 2s
+        labels:
+          severity: critical
+        annotations:
+          summary: "Sequence gaps detected on courier telemetry stream"
+          description: "Device sequence discontinuity exceeded 0 in the last 1m window."
+
+      - alert: GeoStreamDeadletterSpike
+        expr: increase(geostream_deadletter_total[1m]) >= 2
+        for: 2s
+        labels:
+          severity: warning
+        annotations:
+          summary: "DLQ messages spiked on pipeline.deadletter"
+          description: "Invalid or conflicting events exceeded threshold in 1m window."
+
+      - alert: GeoStreamKafkaLagHigh
+        expr: max(geostream_kafka_lag) > 500
+        for: 15s
+        labels:
+          severity: warning
+        annotations:
+          summary: "Kafka consumer lag elevated"
+
+      - alert: GeoStreamIngestStalled
+        expr: rate(geostream_events_received_total[30s]) == 0 and max(geostream_kafka_lag) > 0
+        for: 15s
+        labels:
+          severity: critical
+        annotations:
+          summary: "Producer activity present while consumer intake stalled"
+
+      - alert: GeoStreamDBChannelNearCap
+        expr: geostream_db_channel_depth > 3276
+        for: 10s
+        labels:
+          severity: warning
+        annotations:
+          summary: "Bounded DB persistence channel above 80% capacity"
+
+      - alert: GeoStreamIngestP99High
+        expr: histogram_quantile(0.99, sum(rate(geostream_processing_latency_seconds_bucket[1m])) by (le)) > 0.012
+        for: 30s
+        labels:
+          severity: warning
+        annotations:
+          summary: "INGEST_INTERNAL p99 latency exceeded 12ms budget"
+
+      - alert: GeoStreamWorkerErrors
+        expr: increase(geostream_db_worker_errors_total[1m]) + increase(geostream_redis_errors_total[1m]) > 0
+        for: 5s
+        labels:
+          severity: critical
+        annotations:
+          summary: "Storage dependency errors observed in worker"
+

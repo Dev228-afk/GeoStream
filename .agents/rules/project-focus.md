@@ -11,3 +11,4 @@ Do not run high-volume stress against public hosted mapping/geocoding APIs.
 Do not build extra cloud services or complex frontend features absent explicit acceptance value.
 One working vertical slice is required before independent subagent fan-out.
 Cloud spending requires budget approval, logging and teardown plan.
+

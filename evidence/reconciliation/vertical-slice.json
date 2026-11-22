@@ -1,0 +1,11 @@
+{
+  "crashRecoveryRunId": "run_gate1_180024_crash56",
+  "outboxPublished": 2,
+  "redisRecoveredInside": [
+    "fence-004"
+  ],
+  "runId": "run_gate1_180024",
+  "smokeTransitions": 2,
+  "status": "PASS",
+  "step5To6CrashPGCount": 1
+}

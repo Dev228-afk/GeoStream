@@ -1,0 +1,8 @@
+{
+  "arch": "amd64",
+  "classification": "LOCAL_SINGLE_HOST_BENCHMARK",
+  "goVersion": "go1.26.4",
+  "heapAllocMb": 3.0207977294921875,
+  "numCpu": 16,
+  "os": "windows"
+}

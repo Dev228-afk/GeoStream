@@ -1,0 +1,13 @@
+profiles:
+  duplicate_delivery:
+    description: Re-deliver exact same (eventId, sequence) after worker processing
+  out_of_order_stale:
+    description: Emit lower sequence number after higher sequence committed to Redis
+  sequence_conflict:
+    description: Reuse already accepted sequence with mutated coordinates -> pipeline.deadletter
+  poison_payload:
+    description: Latitude 95.5 or malformed JSON -> pipeline.deadletter
+  step_5_to_6_crash:
+    description: Crash worker after PG commit before Redis CAS update; replay verifies idempotent recovery
+  sequence_gap:
+    description: Skip sequence numbers to trigger partition_checkpoints gap + Prometheus alert

@@ -1,0 +1,107 @@
+{
+  "passed": 10,
+  "runPrefix": "run_chaos_180024",
+  "scenarios": [
+    {
+      "scenario": "1_duplicate_delivery",
+      "expectedCategory": "DUPLICATE",
+      "pgRows": 1,
+      "outboxPending": 1,
+      "redisSeq": 1,
+      "reconcilePass": true,
+      "status": "PASS",
+      "detail": "Second identical delivery ignored; PG count stayed 1"
+    },
+    {
+      "scenario": "2_out_of_order_stale",
+      "expectedCategory": "STALE",
+      "pgRows": 1,
+      "outboxPending": 1,
+      "redisSeq": 2,
+      "reconcilePass": true,
+      "status": "PASS",
+      "detail": "Lower sequence rejected without mutating Redis seq=2"
+    },
+    {
+      "scenario": "3_sequence_conflict_dlq",
+      "expectedCategory": "CONFLICT-\u003eDLQ",
+      "pgRows": 0,
+      "outboxPending": 0,
+      "redisSeq": 1,
+      "reconcilePass": true,
+      "status": "PASS",
+      "detail": "Equal sequence with mutated coordinates emitted to pipeline.deadletter"
+    },
+    {
+      "scenario": "4_poison_invalid_payload",
+      "expectedCategory": "INVALID_EVENT-\u003eDLQ",
+      "pgRows": 0,
+      "outboxPending": 0,
+      "redisSeq": 0,
+      "reconcilePass": true,
+      "status": "PASS",
+      "detail": "Out-of-bounds GPS \u0026 malformed JSON quarantined to pipeline.deadletter"
+    },
+    {
+      "scenario": "5_crash_step5_to_6_replay",
+      "expectedCategory": "RECOVERED_IDEMPOTENT",
+      "pgRows": 1,
+      "outboxPending": 1,
+      "redisSeq": 1,
+      "reconcilePass": true,
+      "status": "PASS",
+      "detail": "PG committed first; replay repaired Redis with 0 duplicate transitions"
+    },
+    {
+      "scenario": "6_crash_step6_to_7_replay",
+      "expectedCategory": "DUPLICATE_SAFE",
+      "pgRows": 1,
+      "outboxPending": 1,
+      "redisSeq": 1,
+      "reconcilePass": true,
+      "status": "PASS",
+      "detail": "Replay classified duplicate safely while preserving PG durability"
+    },
+    {
+      "scenario": "7_outbox_crash_before_mark",
+      "expectedCategory": "OUTBOX_IDEMPOTENT",
+      "pgRows": 1,
+      "outboxPending": 0,
+      "redisSeq": 1,
+      "reconcilePass": true,
+      "status": "PASS",
+      "detail": "Duplicate Kafka publish safe via stable transitionId; retry cleared published_at"
+    },
+    {
+      "scenario": "8_redis_eviction_cold_recovery",
+      "expectedCategory": "COLD_PG_HYDRATION",
+      "pgRows": 2,
+      "outboxPending": 2,
+      "redisSeq": 3,
+      "reconcilePass": true,
+      "status": "PASS",
+      "detail": "Stale cache labeled cleanly; durable PG membership drove accurate EXIT"
+    },
+    {
+      "scenario": "9_transient_db_outage_retry",
+      "expectedCategory": "RETRY_RECOVERED",
+      "pgRows": 1,
+      "outboxPending": 1,
+      "redisSeq": 1,
+      "reconcilePass": true,
+      "status": "PASS",
+      "detail": "Redis shielded from premature advance during DB outage; retry converged"
+    },
+    {
+      "scenario": "10_sequence_gap_reconcile",
+      "expectedCategory": "GAP_DETECTED_FAIL",
+      "pgRows": 1,
+      "outboxPending": 0,
+      "redisSeq": 3,
+      "reconcilePass": false,
+      "status": "PASS",
+      "detail": "Missing seq 2 flagged sequence_gap_count=1 and Pass=false accurately"
+    }
+  ],
+  "total": 10
+}

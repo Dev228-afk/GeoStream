@@ -1,0 +1,11 @@
+{
+  "acceptedUnique": 17723,
+  "activeRedisDevices": 1500,
+  "consumed": 17723,
+  "consumedPerSec": 665.4056110877248,
+  "duplicates": 0,
+  "invalid": 0,
+  "outboxPublished": 3000,
+  "stale": 0,
+  "transitionsPersisted": 3000
+}

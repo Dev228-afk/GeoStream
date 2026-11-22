@@ -10,3 +10,4 @@
    - Go module `github.com/example/geostream`; run `go test -race ./...` for all stateful code.
    - Bounded worker pool + fixed channel cap (4096); never spawn a goroutine per ping; never use `deviceId` as a Prometheus label.
 5. **Tracking**: Update `TASKS.md`, `IMPLEMENTATION_STATUS.md`, and `NEXT_AGENT_HANDOFF.md` at every task boundary.
+

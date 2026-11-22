@@ -1,0 +1,46 @@
+{
+  "title": "GeoStream Operational Overview",
+  "uid": "geostream-overview",
+  "schemaVersion": 39,
+  "version": 1,
+  "panels": [
+    {
+      "id": 1,
+      "title": "Accepted vs Duplicate Event Rate (events/sec)",
+      "type": "timeseries",
+      "targets": [
+        { "expr": "rate(geostream_events_accepted_total[30s])", "legendFormat": "accepted/s" },
+        { "expr": "rate(geostream_events_duplicate_total[30s])", "legendFormat": "duplicate/s" }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "p99 Latency by Boundary (INGEST_INTERNAL vs PIPELINE_TRANSITION)",
+      "type": "timeseries",
+      "targets": [
+        { "expr": "histogram_quantile(0.99, sum(rate(geostream_processing_latency_seconds_bucket[1m])) by (le)) * 1000", "legendFormat": "INGEST_INTERNAL p99 (ms)" },
+        { "expr": "histogram_quantile(0.99, sum(rate(geostream_output_latency_seconds_bucket[1m])) by (le)) * 1000", "legendFormat": "PIPELINE_TRANSITION p99 (ms)" }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Bounded DB Channel Depth & Kafka Partition Lag",
+      "type": "timeseries",
+      "targets": [
+        { "expr": "geostream_db_channel_depth", "legendFormat": "db_channel_depth" },
+        { "expr": "sum(geostream_kafka_lag)", "legendFormat": "kafka_lag_total" }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Data Gaps, DLQ & Dependency Errors",
+      "type": "timeseries",
+      "targets": [
+        { "expr": "increase(geostream_sequence_gaps_total[1m])", "legendFormat": "sequence_gaps" },
+        { "expr": "increase(geostream_deadletter_total[1m])", "legendFormat": "deadletter" },
+        { "expr": "increase(geostream_db_worker_errors_total[1m]) + increase(geostream_redis_errors_total[1m])", "legendFormat": "dep_errors" }
+      ]
+    }
+  ]
+}
+

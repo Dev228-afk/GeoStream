@@ -1,0 +1,10 @@
+{
+  "channelCap": 4096,
+  "classification": "LOCAL_SINGLE_HOST_BENCHMARK",
+  "durationSec": 12,
+  "logicalDevices": 1500,
+  "profile": "dev",
+  "runId": "run-local-001",
+  "targetRate": 1500,
+  "workerPool": 8
+}

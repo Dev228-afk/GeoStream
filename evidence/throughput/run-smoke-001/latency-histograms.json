@@ -1,0 +1,15 @@
+{
+  "ingestInternal": {
+    "boundary": "INGEST_INTERNAL",
+    "p50Ms": 4,
+    "p95Ms": 20,
+    "p99Ms": 100
+  },
+  "pipelineTransition": {
+    "boundary": "PIPELINE_TRANSITION",
+    "p50Ms": 12,
+    "p95Ms": 50,
+    "p99Ms": 100
+  },
+  "productionTarget": "40000 active devices / 80000 events/s / \u003c12ms p99 (TARGET, requires multi-node cluster)"
+}

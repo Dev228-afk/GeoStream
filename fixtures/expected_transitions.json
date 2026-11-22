@@ -1,0 +1,14 @@
+[
+  {
+    "deviceId": "courier-000001",
+    "fenceId": "fence-004",
+    "type": "ENTER",
+    "sequence": 2
+  },
+  {
+    "deviceId": "courier-000001",
+    "fenceId": "fence-004",
+    "type": "EXIT",
+    "sequence": 4
+  }
+]

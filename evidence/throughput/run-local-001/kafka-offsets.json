@@ -1,0 +1,98 @@
+[
+  {
+    "partition": 0,
+    "startOffset": 0,
+    "endOffset": 6176,
+    "committedOffset": 6176
+  },
+  {
+    "partition": 1,
+    "startOffset": 0,
+    "endOffset": 5596,
+    "committedOffset": 5596
+  },
+  {
+    "partition": 2,
+    "startOffset": 0,
+    "endOffset": 7378,
+    "committedOffset": 7378
+  },
+  {
+    "partition": 3,
+    "startOffset": 0,
+    "endOffset": 5304,
+    "committedOffset": 5304
+  },
+  {
+    "partition": 4,
+    "startOffset": 0,
+    "endOffset": 5512,
+    "committedOffset": 5512
+  },
+  {
+    "partition": 5,
+    "startOffset": 0,
+    "endOffset": 6909,
+    "committedOffset": 6909
+  },
+  {
+    "partition": 6,
+    "startOffset": 0,
+    "endOffset": 6940,
+    "committedOffset": 6940
+  },
+  {
+    "partition": 7,
+    "startOffset": 0,
+    "endOffset": 5704,
+    "committedOffset": 5704
+  },
+  {
+    "partition": 8,
+    "startOffset": 0,
+    "endOffset": 6085,
+    "committedOffset": 6085
+  },
+  {
+    "partition": 9,
+    "startOffset": 0,
+    "endOffset": 5857,
+    "committedOffset": 5857
+  },
+  {
+    "partition": 10,
+    "startOffset": 0,
+    "endOffset": 6690,
+    "committedOffset": 6690
+  },
+  {
+    "partition": 11,
+    "startOffset": 0,
+    "endOffset": 5472,
+    "committedOffset": 5472
+  },
+  {
+    "partition": 12,
+    "startOffset": 0,
+    "endOffset": 6293,
+    "committedOffset": 6293
+  },
+  {
+    "partition": 13,
+    "startOffset": 0,
+    "endOffset": 5851,
+    "committedOffset": 5851
+  },
+  {
+    "partition": 14,
+    "startOffset": 0,
+    "endOffset": 5592,
+    "committedOffset": 5592
+  },
+  {
+    "partition": 15,
+    "startOffset": 0,
+    "endOffset": 5602,
+    "committedOffset": 5602
+  }
+]

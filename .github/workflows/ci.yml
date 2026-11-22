@@ -1,0 +1,90 @@
+name: GeoStream CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  go-test-race-and-integration:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_USER: geostream
+          POSTGRES_PASSWORD: geostream_local_2026
+          POSTGRES_DB: geostream
+        ports:
+          - 5437:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 5s
+          --health-timeout 3s
+          --health-retries 10
+      redis:
+        image: redis:7-alpine
+        ports:
+          - 6383:6379
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 5s
+          --health-timeout 3s
+          --health-retries 10
+      kafka:
+        image: apache/kafka:3.9.0
+        ports:
+          - 19092:19092
+        env:
+          KAFKA_NODE_ID: 1
+          KAFKA_PROCESS_ROLES: broker,controller
+          KAFKA_LISTENERS: PLAINTEXT://:19092,CONTROLLER://:9093
+          KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://127.0.0.1:19092
+          KAFKA_CONTROLLER_LISTENER_NAMES: CONTROLLER
+          KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: CONTROLLER:PLAINTEXT,PLAINTEXT:PLAINTEXT
+          KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+          KAFKA_CONTROLLER_QUORUM_VOTERS: 1@localhost:9093
+          KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+          KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
+          KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
+          CLUSTER_ID: "4L6g3nShT-eMCtK--X86sw"
+
+    env:
+      KAFKA_BROKERS: 127.0.0.1:19092
+      DATABASE_URL: postgres://geostream:geostream_local_2026@127.0.0.1:5437/geostream?sslmode=disable
+      REDIS_ADDR: 127.0.0.1:6383
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: '1.25'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node scripts/gen-contracts.mjs --check
+      - run: go vet ./...
+      - run: go test -race -count=1 ./internal/... ./api/... ./tests/...
+      - run: go run ./bench/compare --events 1000 --out /tmp/geostream-bp-ci
+      - run: docker build -t geostream:ci .
+
+  web-test-and-build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9.15.4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+          cache-dependency-path: web/pnpm-lock.yaml
+      - run: |
+          cd web
+          pnpm install --frozen-lockfile
+          pnpm run typecheck
+          pnpm run lint
+          pnpm run test
+          pnpm run build
+

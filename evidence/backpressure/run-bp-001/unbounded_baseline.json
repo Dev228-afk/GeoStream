@@ -1,0 +1,16 @@
+{
+  "mode": "unbounded_baseline",
+  "inputEvents": 2400,
+  "expectedCrossings": 2400,
+  "persistedCount": 2400,
+  "durationMs": 8665.769,
+  "throughputEventsPerSec": 276.9517467548612,
+  "maxQueueDepth": 2288,
+  "peakHeapMb": 9.460563659667969,
+  "totalGcPauseMs": 0.5548,
+  "p50Ms": 2151.216,
+  "p95Ms": 7794.254,
+  "p99Ms": 8468.435,
+  "cpuProfile": "unbounded_baseline_cpu.pb.gz",
+  "heapProfile": "unbounded_baseline_heap.pb.gz"
+}

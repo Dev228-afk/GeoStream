@@ -1,0 +1,47 @@
+{
+  "baseline": {
+    "mode": "unbounded_baseline",
+    "inputEvents": 2400,
+    "expectedCrossings": 2400,
+    "persistedCount": 2400,
+    "durationMs": 8665.769,
+    "throughputEventsPerSec": 276.9517467548612,
+    "maxQueueDepth": 2288,
+    "peakHeapMb": 9.460563659667969,
+    "totalGcPauseMs": 0.5548,
+    "p50Ms": 2151.216,
+    "p95Ms": 7794.254,
+    "p99Ms": 8468.435,
+    "cpuProfile": "unbounded_baseline_cpu.pb.gz",
+    "heapProfile": "unbounded_baseline_heap.pb.gz"
+  },
+  "bounded": {
+    "mode": "bounded_after_fix",
+    "inputEvents": 2400,
+    "expectedCrossings": 2400,
+    "persistedCount": 2400,
+    "durationMs": 172.255,
+    "throughputEventsPerSec": 13932.791696056149,
+    "maxQueueDepth": 256,
+    "peakHeapMb": 3.9894866943359375,
+    "totalGcPauseMs": 0,
+    "p50Ms": 18.613,
+    "p95Ms": 19.953,
+    "p99Ms": 20.316,
+    "cpuProfile": "bounded_after_fix_cpu.pb.gz",
+    "heapProfile": "bounded_after_fix_heap.pb.gz"
+  },
+  "classification": "REPRODUCED",
+  "environment": {
+    "arch": "amd64",
+    "goVersion": "go1.26.4",
+    "numCpu": 16,
+    "os": "windows"
+  },
+  "historicalResumeClaim": "22% throughput drop under unbounded buffer (HISTORICAL_RESUME_CLAIM)",
+  "identicalOutputCounts": true,
+  "measuredAt": "2026-11-22T03:39:51.2511581Z",
+  "measuredDeltaVsFixedPct": 98.0122307661195,
+  "persistedCount": 2400,
+  "runId": "run-bp-001"
+}

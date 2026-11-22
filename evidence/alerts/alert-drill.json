@@ -1,0 +1,117 @@
+{
+  "classification": "REPRODUCED",
+  "firedAt": "2026-11-22T18:07:28.2073227Z",
+  "firingAlertmanager": [
+    {
+      "annotations": {
+        "description": "Device sequence discontinuity exceeded 0 in the last 1m window.",
+        "summary": "Sequence gaps detected on courier telemetry stream"
+      },
+      "endsAt": "2026-11-22T18:11:25.215Z",
+      "fingerprint": "9600e9d861291f09",
+      "generatorURL": "http://e01b22def7de:9090/graph?g0.expr=increase%28geostream_sequence_gaps_total%5B1m%5D%29+%3E+0\u0026g0.tab=1",
+      "labels": {
+        "alertname": "GeoStreamSequenceGapsDetected",
+        "instance": "geostream-worker:8201",
+        "job": "geostream-ingest-docker",
+        "severity": "critical"
+      },
+      "receivers": [
+        {
+          "name": "default-local-sink"
+        }
+      ],
+      "startsAt": "2026-11-22T18:07:25.215Z",
+      "status": {
+        "inhibitedBy": [],
+        "silencedBy": [],
+        "state": "active"
+      },
+      "updatedAt": "2026-11-22T18:07:26.649Z"
+    },
+    {
+      "annotations": {
+        "description": "Invalid or conflicting events exceeded threshold in 1m window.",
+        "summary": "DLQ messages spiked on pipeline.deadletter"
+      },
+      "endsAt": "2026-11-22T18:11:25.215Z",
+      "fingerprint": "d6dbcbe9d6e8145a",
+      "generatorURL": "http://e01b22def7de:9090/graph?g0.expr=increase%28geostream_deadletter_total%5B1m%5D%29+%3E%3D+2\u0026g0.tab=1",
+      "labels": {
+        "alertname": "GeoStreamDeadletterSpike",
+        "instance": "geostream-worker:8201",
+        "job": "geostream-ingest-docker",
+        "severity": "warning"
+      },
+      "receivers": [
+        {
+          "name": "default-local-sink"
+        }
+      ],
+      "startsAt": "2026-11-22T18:07:25.215Z",
+      "status": {
+        "inhibitedBy": [],
+        "silencedBy": [],
+        "state": "active"
+      },
+      "updatedAt": "2026-11-22T18:07:26.651Z"
+    }
+  ],
+  "firingPrometheus": {
+    "data": {
+      "alerts": [
+        {
+          "activeAt": "2026-11-22T18:07:23.215567599Z",
+          "annotations": {
+            "description": "Device sequence discontinuity exceeded 0 in the last 1m window.",
+            "summary": "Sequence gaps detected on courier telemetry stream"
+          },
+          "labels": {
+            "alertname": "GeoStreamSequenceGapsDetected",
+            "instance": "geostream-worker:8201",
+            "job": "geostream-ingest-docker",
+            "severity": "critical"
+          },
+          "state": "firing",
+          "value": "6.146701270318262e+00"
+        },
+        {
+          "activeAt": "2026-11-22T18:07:23.215567599Z",
+          "annotations": {
+            "description": "Invalid or conflicting events exceeded threshold in 1m window.",
+            "summary": "DLQ messages spiked on pipeline.deadletter"
+          },
+          "labels": {
+            "alertname": "GeoStreamDeadletterSpike",
+            "instance": "geostream-worker:8201",
+            "job": "geostream-ingest-docker",
+            "severity": "warning"
+          },
+          "state": "firing",
+          "value": "2.0489004234394206e+00"
+        },
+        {
+          "activeAt": "2026-11-22T18:07:23.215567599Z",
+          "annotations": {
+            "summary": "INGEST_INTERNAL p99 latency exceeded 12ms budget"
+          },
+          "labels": {
+            "alertname": "GeoStreamIngestP99High",
+            "severity": "warning"
+          },
+          "state": "pending",
+          "value": "4.94e-02"
+        }
+      ]
+    },
+    "status": "success"
+  },
+  "recoveredPrometheus": {
+    "data": {
+      "alerts": []
+    },
+    "status": "success"
+  },
+  "resolvedAt": "2026-11-22T18:08:25.2660778Z",
+  "runId": "run_alert_drill"
+}
