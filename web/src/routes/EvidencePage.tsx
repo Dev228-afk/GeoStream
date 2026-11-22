@@ -1,18 +1,33 @@
+import { useState } from 'react';
 import { useAlertsEvidence, useChaosEvidence, useReconciliation } from '../api/hooks';
 
 export function EvidencePage({ runId }: { runId: string }) {
   const recQ = useReconciliation(runId);
   const chaosQ = useChaosEvidence();
   const alertQ = useAlertsEvidence();
+  const [copiedJson, setCopiedJson] = useState(false);
 
   const rec = recQ.data;
   const chaos = chaosQ.data;
+
+  async function handleCopyJson() {
+    if (!alertQ.data) return;
+    try {
+      await navigator.clipboard?.writeText(JSON.stringify(alertQ.data, null, 2));
+      setCopiedJson(true);
+      window.setTimeout(() => setCopiedJson(false), 1800);
+    } catch {
+      setCopiedJson(false);
+    }
+  }
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
       <section className="gs-panel" aria-label="Run reconciliation report">
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '8px' }}>
-          <h2 style={{ margin: 0, fontSize: '18px' }}>Produced vs. consumed ledger reconciliation ({runId})</h2>
+          <h2 style={{ margin: 0, fontSize: '18px', color: 'var(--ink)' }}>
+            Produced vs. consumed ledger reconciliation ({runId})
+          </h2>
           {rec ? (
             <span className={`gs-badge ${rec.pass ? 'gs-badge-success' : 'gs-badge-danger'}`}>
               {rec.pass ? 'RECONCILIATION PASS' : 'RECONCILIATION FAIL'}
@@ -43,7 +58,9 @@ export function EvidencePage({ runId }: { runId: string }) {
       </section>
 
       <section className="gs-panel" aria-label="Chaos failure matrix">
-        <h2 style={{ margin: '0 0 12px', fontSize: '18px' }}>Chaos &amp; crash-safety verification matrix</h2>
+        <h2 style={{ margin: '0 0 12px', fontSize: '18px', color: 'var(--ink)' }}>
+          Chaos &amp; crash-safety verification matrix
+        </h2>
         {!chaos ? (
           <div style={{ color: 'var(--muted)' }}>No chaos matrix artifact loaded.</div>
         ) : (
@@ -73,18 +90,39 @@ export function EvidencePage({ runId }: { runId: string }) {
       </section>
 
       <section className="gs-panel" aria-label="Alert drill provenance">
-        <h2 style={{ margin: '0 0 8px', fontSize: '18px' }}>Prometheus alert drill verification</h2>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '8px', marginBottom: '12px' }}>
+          <h2 style={{ margin: 0, fontSize: '18px', color: 'var(--ink)' }}>Prometheus alert drill verification</h2>
+          {alertQ.data ? (
+            <button type="button" className="gs-btn" onClick={() => void handleCopyJson()}>
+              {copiedJson ? 'Copied' : 'Copy JSON'}
+            </button>
+          ) : null}
+        </div>
         {alertQ.data ? (
-          <pre tabIndex={0} role="region" aria-label="Prometheus alert drill JSON payload" style={{ margin: 0, fontSize: '12px', fontFamily: 'var(--font-mono)', overflowX: 'auto', background: 'var(--surface-muted)', padding: '12px', borderRadius: 'var(--r-sm)' }}>
+          <pre
+            tabIndex={0}
+            role="region"
+            aria-label="Prometheus alert drill JSON payload"
+            style={{
+              margin: 0,
+              fontSize: '12px',
+              fontFamily: 'var(--font-mono)',
+              color: '#cbd5e1',
+              overflowX: 'auto',
+              background: '#090d16',
+              border: '1px solid var(--line-strong)',
+              padding: '14px',
+              borderRadius: 'var(--r-sm)',
+            }}
+          >
             {JSON.stringify(alertQ.data, null, 2)}
           </pre>
         ) : (
           <div style={{ fontSize: '13px', color: 'var(--muted)' }}>
-            Live Prometheus alert drill artifact not captured yet (`evidence/alerts/alert-drill.json`).
+            Live Prometheus alert drill artifact not captured yet (<code>evidence/alerts/alert-drill.json</code>).
           </div>
         )}
       </section>
     </div>
   );
 }
-
